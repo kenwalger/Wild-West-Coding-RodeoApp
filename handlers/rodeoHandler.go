@@ -6,14 +6,22 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"go.mongodb.org/mongo-driver/mongo"
 	"io"
 	"net/http"
 	"os"
 )
 
 type RodeoHandler struct {
-	//collection *mongo.Collection
-	ctx context.Context
+	collection *mongo.Collection
+	ctx        context.Context
+}
+
+func NewRodeoHandler(ctx context.Context, collection *mongo.Collection) *RodeoHandler {
+	return &RodeoHandler{
+		collection: collection,
+		ctx:        ctx,
+	}
 }
 
 // swagger:operation GET /rodeos rodeos ListRodeos

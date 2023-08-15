@@ -20,10 +20,36 @@ package main
 
 import (
 	handlers "RodeoApp/handlers"
+	"context"
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
+	"go.mongodb.org/mongo-driver/mongo/readpref"
+	"log"
+	"os"
 )
 
 var rodeosHandler *handlers.RodeoHandler
+var ctx context.Context
+var client *mongo.Client
+
+func init() {
+	err := godotenv.Load("instance/.env")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	ctx = context.Background()
+	client, err = mongo.Connect(ctx, options.Client().ApplyURI(os.Getenv("MONGODB_URI")))
+	if err = client.Ping(context.TODO(), readpref.Primary()); err != nil {
+		log.Fatal(err)
+	}
+	log.Println("Connected to MongoDB Atlas.")
+	rodeoCollection := client.Database(os.Getenv("MONGODB_DATABASE")).Collection(os.Getenv("RODEO_COLLECTION"))
+	rodeosHandler = handlers.NewRodeoHandler(ctx, rodeoCollection)
+
+}
 
 func IndexHandler(c *gin.Context) {
 
