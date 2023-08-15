@@ -1,0 +1,109 @@
+[
+  {
+    "_id": "507f191e810c19729de860ea",
+    "name": "Wild West Buck-A-Roo",
+    "pro_rodeo": true,
+    "start_date": "2023-07-01",
+    "end_date": "2023-07-04",
+    "venue": {
+      "venue_id": 1,
+      "name": "Somewhere",
+      "seats": [[0, 0, 0, 0], [0, 0, 0, 0]],
+      "seats_available": 8,
+      "coordinates": [
+        -122.5771,
+        45.1475
+      ]
+    },
+    "events": {
+      "rough_stock": ["Saddle bronc", "Bareback", "Bull riding"],
+      "timed": ["Steer wrestling", "Tie down roping", "Team roping", "Barrel racing"],
+      "other": ["Freestyle bullfighting"]
+    }
+  },
+  {
+    "_id": "507f191e810c19729de861ea",
+    "name": "Wild West Rodeo",
+    "pro_rodeo": true,
+    "start_date": "2022-07-01",
+    "end_date": "2022-07-04",
+    "venue": {
+      "venue_id": 1,
+      "name": "Big town Arena",
+      "seats": [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
+      "seats_available": 12,
+      "coordinates": [
+        -122.9768,
+        45.2112
+      ]
+    },
+    "events": {
+      "rough_stock": ["Saddle bronc", "Bareback", "Bull riding"],
+      "timed": ["Steer wrestling", "Tie down roping", "Team roping", "Barrel racing"],
+      "other": ["Junior bull riding", "Wild cow milking"]
+    }
+  },
+  {
+    "_id": "507f191e810c19729de862ea",
+    "name": "Wild West Stampede",
+    "pro_rodeo": false,
+    "start_date": "2022-06-15",
+    "end_date": "2022-06-18",
+    "venue": {
+      "venue_id": 1,
+      "name": "Kinda Dull",
+      "seats": [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
+      "seats_available": 12,
+      "coordinates": [
+        -122.3735,
+        45.4314
+      ]
+    },
+    "events": {
+      "rough_stock": ["Saddle Bronc", "Bareback", "Bull Riding"],
+      "timed": ["Steer wrestling", "Tie down roping", "Team roping", "Barrel racing", "Breakaway roping"]
+    }
+  },
+  {
+    "_id": "507f191e810c19729de863ea",
+    "name": "Wild West Festival",
+    "pro_rodeo": false,
+    "start_date": "2023-06-15",
+    "end_date": "2023-06-18",
+    "venue": {
+      "venue_id": 1,
+      "name": "Hot Valley",
+      "seats": [[0, 0, 0, 0]],
+      "seats_available": 4,
+      "coordinates": [
+        -121.8375,
+        39.7285
+      ]
+    },
+    "events": {
+      "other": ["cow milking"]
+    }
+  },
+  {
+    "_id": "507f191e810c19729de864ea",
+    "name": "Wild West Exhibition",
+    "pro_rodeo": true,
+    "start_date": "2023-06-01",
+    "end_date": "2023-06-04",
+    "venue": {
+      "venue_id": 1,
+      "name": "Up North Arena",
+      "seats": [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
+      "seats_available": 36,
+      "coordinates": [
+        -113.5525,
+        53.2648
+      ]
+    },
+    "events": {
+      "rough_stock": ["Saddle Bronc", "Bareback", "Bull Riding"],
+      "timed": ["Steer wrestling", "Tie down roping", "Team roping", "Barrel racing", "Breakaway roping"],
+      "other": ["Extreme cowboy"]
+    }
+  }
+]
