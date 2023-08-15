@@ -6,23 +6,23 @@ import (
 )
 
 type Rodeo struct {
-	ID        primitive.ObjectID
-	Name      string
-	ProRodeo  bool
-	StartDate string
-	EndDate   string
+	ID        primitive.ObjectID `json:"_id"`
+	Name      string             `json:"name"`
+	ProRodeo  bool               `json:"pro_rodeo"`
+	StartDate string             `json:"start_date"`
+	EndDate   string             `json:"end_date"`
 	Venue     struct {
-		VenueId        int
-		Name           string
-		Seats          [][]int
-		SeatsAvailable int
-		Coordinates    []float64
-	}
-	PublishedAt time.Time
-	UpdatedAt   time.Time
+		VenueId        int       `json:"venue_id"`
+		Name           string    `json:"name"`
+		Seats          [][]int   `json:"seats"`
+		SeatsAvailable int       `json:"seats_available"`
+		Coordinates    []float64 `json:"coordinates"`
+	} `json:"venue"`
+	PublishedAt time.Time `json:"published_at"`
+	UpdatedAt   time.Time `json:"updated_at"`
 	Events      struct {
-		RoughStock []string
-		Timed      []string
-		Other      []string
-	}
+		RoughStock []string `json:"rough_stock"`
+		Timed      []string `json:"timed"`
+		Other      []string `json:"other"`
+	} `json:"events"`
 }
