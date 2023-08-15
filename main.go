@@ -1,3 +1,21 @@
+// Rodeos API
+//
+// This is a sample API about rodeos. Additional information can be found at
+// https://github.com/kenwalger/Wild-West-Coding-RodeoApp
+//
+// Schemes: http
+// Host: localhost:8080
+// Basepath: /
+// Version: 1.0.0
+// Contact: Ken W. Alger <kealger@cisco.com>
+//
+// Consumes:
+//   - application/json
+//
+// Produces:
+//   - application/json
+//
+// swagger:meta
 package main
 
 import (

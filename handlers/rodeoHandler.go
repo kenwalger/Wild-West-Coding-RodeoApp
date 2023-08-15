@@ -16,6 +16,15 @@ type RodeoHandler struct {
 	ctx context.Context
 }
 
+// swagger:operation GET /rodeos rodeos ListRodeos
+// Returns list of rodeos
+// ---
+// produces:
+// - application/json
+// responses:
+//
+//	'200':
+//	   description: Successful operation
 func (handler *RodeoHandler) ListRodeosHandler(c *gin.Context) {
 
 	var rodeos = make([]models.Rodeo, 0)
