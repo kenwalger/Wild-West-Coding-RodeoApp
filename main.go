@@ -70,7 +70,15 @@ func main() {
 	router.GET("/", IndexHandler)
 	router.GET("/:name", NameHandler)
 
-	router.GET("/rodeos", rodeosHandler.ListRodeosHandler)
+	// API Version 1 endpoints and routes
+	version1 := router.Group("/v1")
+	{
+		version1.GET("/rodeos", rodeosHandler.ListRodeosHandler)
+		//router.POST("/rodeos", rodeosHandler.NewRodeoHandler)
+		//router.GET("/rodeos/:id", rodeosHandler.GetRodeoHandler)
+		//router.PUT("/rodeos/:id", rodeosHandler.UpdateRodeoHandler)
+		//router.DELETE("/rodeos/:id", rodeosHandler.DeleteRodeoHandler)
+	}
 
 	router.Run()
 }
