@@ -46,7 +46,7 @@ func init() {
 		log.Fatal(err)
 	}
 	log.Println("Connected to MongoDB Atlas.")
-	rodeoCollection := client.Database(os.Getenv("MONGODB_DATABASE")).Collection(os.Getenv("RODEO_COLLECTION"))
+	rodeoCollection := client.Database(os.Getenv("MONGODB_DATABASE")).Collection(os.Getenv("MONGODB_COLLECTION"))
 	rodeosHandler = handlers.NewRodeoHandler(ctx, rodeoCollection)
 
 }

@@ -2,14 +2,13 @@ package handlers
 
 import (
 	"RodeoApp/models"
-	"context"
-	"encoding/json"
+	context2 "context"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
-	"io"
+	"golang.org/x/net/context"
 	"net/http"
-	"os"
 )
 
 type RodeoHandler struct {
@@ -25,7 +24,7 @@ func NewRodeoHandler(ctx context.Context, collection *mongo.Collection) *RodeoHa
 }
 
 // swagger:operation GET /rodeos rodeos ListRodeos
-// Returns list of rodeos
+// Responds with the list of all rodeos as JSON.
 // ---
 // produces:
 // - application/json
@@ -34,28 +33,28 @@ func NewRodeoHandler(ctx context.Context, collection *mongo.Collection) *RodeoHa
 //	'200':
 //	   description: Successful operation
 func (handler *RodeoHandler) ListRodeosHandler(c *gin.Context) {
-
-	var rodeos = make([]models.Rodeo, 0)
-
-	// Open our jsonFile
-	jsonFile, err := os.Open("rodeos.json")
-	// if we os.Open returns an error then handle it
+	cursor, err := handler.collection.Find(handler.ctx, bson.M{})
 	if err != nil {
-		fmt.Println("Error opening rodeo list: ", err.Error())
+		c.JSON(http.StatusInternalServerError, gin.H{"error: ": err.Error()})
+		return
 	}
-	// defer the closing of our jsonFile so that we can parse it later on
-	defer func(jsonFile *os.File) {
-		err := jsonFile.Close()
+
+	defer func(cusor *mongo.Cursor, ctx context2.Context) {
+		err := cusor.Close(ctx)
 		if err != nil {
-
+			fmt.Println("Error closing cursor.")
 		}
-	}(jsonFile)
+	}(cursor, handler.ctx)
 
-	byteValue, _ := io.ReadAll(jsonFile)
-
-	err = json.Unmarshal(byteValue, &rodeos)
-	if err != nil {
-		fmt.Println("Error converting file: ", err.Error())
+	rodeos := make([]models.Rodeo, 0)
+	// Iterate through the data cursor of rodeos and append them to the rodeos slice
+	for cursor.Next(handler.ctx) {
+		var rodeo models.Rodeo
+		err := cursor.Decode(&rodeo)
+		if err != nil {
+			return
+		}
+		rodeos = append(rodeos, rodeo)
 	}
 
 	c.IndentedJSON(http.StatusOK, rodeos)
