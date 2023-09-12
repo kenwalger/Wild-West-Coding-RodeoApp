@@ -77,8 +77,6 @@ func (handler *RodeoHandler) ListRodeosHandler(c *gin.Context) {
 //
 //	'200':
 //	   description: Successful operation
-//	'400':
-//	   description: Bad Request - Invalid rodeo ID
 //	'500':
 //	   description: Internal Server Error
 func (handler *RodeoHandler) ListSingleRodeoHandler(c *gin.Context) {
@@ -96,4 +94,36 @@ func (handler *RodeoHandler) ListSingleRodeoHandler(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, rodeo)
+}
+
+// swagger:operation DELETE /rodeos/{id} rodeos deleteRodeo
+// Locate the rodeo whose ID value matches the ID parameter
+// sent by the client, delete the rodeo from the database,
+// return a successful deletion message.
+// ---
+// parameter:
+// - name: id
+// in: path
+// description: ID of the rodeo
+// required: true
+// type: string
+//
+// produce:
+// - application/json
+// responses:
+//
+//	'200':
+//	    description: Successful operation
+//	'500':
+//	    description: Internal Server Error
+func (handler *RodeoHandler) DeleteRodeoHandler(c *gin.Context) {
+	id := c.Param("id")
+
+	_, err := handler.collection.DeleteOne(handler.ctx, bson.M{"_id": id})
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"Error, internal server: ": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Rodeo has been deleted."})
 }

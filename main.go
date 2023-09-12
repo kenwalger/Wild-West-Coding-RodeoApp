@@ -78,7 +78,7 @@ func main() {
 		//router.POST("/rodeos", rodeosHandler.NewRodeoHandler)
 		version1.GET("/rodeos/:id", rodeosHandler.ListSingleRodeoHandler)
 		//router.PUT("/rodeos/:id", rodeosHandler.UpdateRodeoHandler)
-		//router.DELETE("/rodeos/:id", rodeosHandler.DeleteRodeoHandler)
+		version1.DELETE("/rodeos/:id", rodeosHandler.DeleteRodeoHandler)
 	}
 
 	router.Run()
