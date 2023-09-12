@@ -6,9 +6,11 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 	"golang.org/x/net/context"
 	"net/http"
+	"time"
 )
 
 type RodeoHandler struct {
@@ -126,4 +128,42 @@ func (handler *RodeoHandler) DeleteRodeoHandler(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{"message": "Rodeo has been deleted."})
+}
+
+// swagger:operation POST /rodeos rodeos insertRodeo
+// Insert a new rodeo into the database from JSON received in
+// the request body, returns the new rodeo as a response.
+// ---
+// produce:
+// - application/json
+// responses:
+//
+//	'201':
+//	    description: Successful creation of resource
+//	'400':
+//	    description: Invalid input
+//	'500':
+//	    description: Internal Server Error
+func (handler *RodeoHandler) NewRodeoHandler(c *gin.Context) {
+	var rodeo models.Rodeo
+	if err := c.ShouldBindJSON(&rodeo); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"Error - bad request: ": err.Error(),
+		})
+		return
+	}
+
+	rodeo.ID = primitive.NewObjectID()
+	rodeo.PublishedAt = time.Now()
+	rodeo.UpdatedAt = time.Now()
+
+	_, err := handler.collection.InsertOne(handler.ctx, rodeo)
+	if err != nil {
+		fmt.Println(err)
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"Error:": "Error while inserting a new rodeo.",
+		})
+		return
+	}
+	c.IndentedJSON(http.StatusCreated, rodeo)
 }
