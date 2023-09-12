@@ -59,3 +59,41 @@ func (handler *RodeoHandler) ListRodeosHandler(c *gin.Context) {
 
 	c.IndentedJSON(http.StatusOK, rodeos)
 }
+
+// swagger:operation GET /rodeos/{id} rodeos oneRodeo
+// Locate the rodeo whose ID value matches the ID parameter
+// sent by the client, then returns the rodeo as a response.
+// --
+// parameter:
+//   - name: id
+//     in: path
+//     description: ID of the rodeo
+//     required: true
+//     type: string
+//
+// produces:
+// - application/json
+// response:
+//
+//	'200':
+//	   description: Successful operation
+//	'400':
+//	   description: Bad Request - Invalid rodeo ID
+//	'500':
+//	   description: Internal Server Error
+func (handler *RodeoHandler) ListSingleRodeoHandler(c *gin.Context) {
+	id := c.Param("id")
+	var rodeo models.Rodeo
+
+	cursor := handler.collection.FindOne(handler.ctx, bson.M{"_id": id})
+
+	err := cursor.Decode(&rodeo)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"Error server: ": err.Error(),
+		})
+		return
+	}
+
+	c.JSON(http.StatusOK, rodeo)
+}

@@ -18,6 +18,7 @@
 // swagger:meta
 package main
 
+//goland:noinspection ALL
 import (
 	handlers "RodeoApp/handlers"
 	"context"
@@ -71,11 +72,11 @@ func main() {
 	router.GET("/:name", NameHandler)
 
 	// API Version 1 endpoints and routes
-	version1 := router.Group("/v1")
+	version1 := router.Group("/api/v1")
 	{
 		version1.GET("/rodeos", rodeosHandler.ListRodeosHandler)
 		//router.POST("/rodeos", rodeosHandler.NewRodeoHandler)
-		//router.GET("/rodeos/:id", rodeosHandler.GetRodeoHandler)
+		version1.GET("/rodeos/:id", rodeosHandler.ListSingleRodeoHandler)
 		//router.PUT("/rodeos/:id", rodeosHandler.UpdateRodeoHandler)
 		//router.DELETE("/rodeos/:id", rodeosHandler.DeleteRodeoHandler)
 	}
