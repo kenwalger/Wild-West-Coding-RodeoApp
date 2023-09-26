@@ -104,11 +104,11 @@ func (handler *RodeoHandler) ListSingleRodeoHandler(c *gin.Context) {
 // return a successful deletion message.
 // ---
 // parameter:
-// - name: id
-// in: path
-// description: ID of the rodeo
-// required: true
-// type: string
+//   - name: id
+//     in: path
+//     description: ID of the rodeo
+//     required: true
+//     type: string
 //
 // produce:
 // - application/json
