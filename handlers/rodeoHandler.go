@@ -33,7 +33,7 @@ func NewRodeoHandler(ctx context.Context, collection *mongo.Collection) *RodeoHa
 // responses:
 //
 //	'200':
-//	   description: Successful operation
+//	    description: Successful operation
 func (handler *RodeoHandler) ListRodeosHandler(c *gin.Context) {
 	cursor, err := handler.collection.Find(handler.ctx, bson.M{})
 	if err != nil {
@@ -65,8 +65,8 @@ func (handler *RodeoHandler) ListRodeosHandler(c *gin.Context) {
 // swagger:operation GET /rodeos/{id} rodeos oneRodeo
 // Locate the rodeo whose ID value matches the ID parameter
 // sent by the client, then returns the rodeo as a response.
-// --
-// parameter:
+// ---
+// parameters:
 //   - name: id
 //     in: path
 //     description: ID of the rodeo
@@ -75,12 +75,12 @@ func (handler *RodeoHandler) ListRodeosHandler(c *gin.Context) {
 //
 // produces:
 // - application/json
-// response:
+// responses:
 //
 //	'200':
-//	   description: Successful operation
+//	    description: Successful operation
 //	'500':
-//	   description: Internal Server Error
+//	    description: Internal Server Error
 func (handler *RodeoHandler) ListSingleRodeoHandler(c *gin.Context) {
 	id := c.Param("id")
 	var rodeo models.Rodeo
@@ -166,4 +166,54 @@ func (handler *RodeoHandler) NewRodeoHandler(c *gin.Context) {
 		return
 	}
 	c.IndentedJSON(http.StatusCreated, rodeo)
+}
+
+// swagger:operation PUT /rodeos/{id} rodeos updateRodeo
+// Update an existing rodeo whose ID value matches the ID parameter
+// sent by the client with the request body from the PUT request, then
+// return the updated rodeo as a response.
+// ---
+// parameters:
+//   - name: id
+//     in: path
+//     description: ID of the rodeo
+//     required: true
+//     type: string
+//
+// produces:
+// - application/json
+// responses:
+//
+//	'200':
+//	    description: Successful operation
+//	'400':
+//	    description: Invalid input
+//	'404':
+//	    description: Invalid rodeo ID
+func (handler *RodeoHandler) UpdateRodeoHandler(c *gin.Context) {
+	id := c.Param("id")
+	var rodeo models.Rodeo
+
+	if err := c.ShouldBindJSON(&rodeo); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error: ": err.Error()})
+		return
+	}
+
+	// Take the updated information from the request body, update the
+	// rodeo with the updated_at field and current time, save it to the database.
+	_, err := handler.collection.UpdateOne(handler.ctx, bson.M{"_id": id},
+		bson.D{{"$set", bson.D{
+			{"name", rodeo.Name},
+			{"pro_rodeo", rodeo.ProRodeo},
+			{"start_date", rodeo.StartDate},
+			{"end_date", rodeo.EndDate},
+			{"venue", rodeo.Venue},
+			{"events", rodeo.Events},
+			{"updated_at", time.Now()},
+		}}})
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"Error updating rodeo: ": err.Error()})
+	}
+
+	c.JSON(http.StatusOK, rodeo)
 }
