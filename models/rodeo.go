@@ -6,7 +6,7 @@ import (
 )
 
 type Rodeo struct {
-	ID        primitive.ObjectID `json:"_id"`
+	ID        primitive.ObjectID `json:"_id" bson:"_id"`
 	Name      string             `json:"name"`
 	ProRodeo  bool               `json:"pro_rodeo"`
 	StartDate string             `json:"start_date"`
