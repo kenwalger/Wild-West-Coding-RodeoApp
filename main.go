@@ -68,6 +68,8 @@ func NameHandler(c *gin.Context) {
 
 func main() {
 	router := gin.Default()
+	router.ForwardedByClientIP = true
+	router.SetTrustedProxies([]string{"127.0.0.1"})
 	router.GET("/", IndexHandler)
 	router.GET("/:name", NameHandler)
 
@@ -81,5 +83,8 @@ func main() {
 		version1.DELETE("/rodeos/:id", rodeosHandler.DeleteRodeoHandler)
 	}
 
-	router.Run()
+	err := router.Run()
+	if err != nil {
+		return
+	}
 }

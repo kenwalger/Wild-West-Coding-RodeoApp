@@ -17,7 +17,7 @@
 MONGODB_URI=<<MongoDB Connection String>>
 MONGODB_DATABASE=<<MongoDB database name>>
 MONGODB_COLLECTION=<<MongoDB collection name>>
-
+PORT=<<Port number>>
 
 #### Episode 1
 Project setup
