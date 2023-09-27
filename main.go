@@ -31,6 +31,7 @@ import (
 	"os"
 )
 
+var authHandler *handlers.AuthHandler
 var rodeosHandler *handlers.RodeoHandler
 var ctx context.Context
 var client *mongo.Client
@@ -49,6 +50,7 @@ func init() {
 	log.Println("Connected to MongoDB Atlas.")
 	rodeoCollection := client.Database(os.Getenv("MONGODB_DATABASE")).Collection(os.Getenv("MONGODB_COLLECTION"))
 	rodeosHandler = handlers.NewRodeoHandler(ctx, rodeoCollection)
+	authHandler = &handlers.AuthHandler{}
 
 }
 
@@ -72,15 +74,21 @@ func main() {
 	router.SetTrustedProxies([]string{"127.0.0.1"})
 	router.GET("/", IndexHandler)
 	router.GET("/:name", NameHandler)
+	router.POST("/signin", authHandler.SignInHandler)
 
 	// API Version 1 endpoints and routes
 	version1 := router.Group("/api/v1")
 	{
 		version1.GET("/rodeos", rodeosHandler.ListRodeosHandler)
-		version1.POST("/rodeos", rodeosHandler.NewRodeoHandler)
 		version1.GET("/rodeos/:id", rodeosHandler.ListSingleRodeoHandler)
-		version1.PUT("/rodeos/:id", rodeosHandler.UpdateRodeoHandler)
-		version1.DELETE("/rodeos/:id", rodeosHandler.DeleteRodeoHandler)
+
+		authorizedV1 := version1.Group("")
+		authorizedV1.Use(authHandler.AuthMiddleware())
+		{
+			version1.POST("/rodeos", rodeosHandler.NewRodeoHandler)
+			version1.PUT("/rodeos/:id", rodeosHandler.UpdateRodeoHandler)
+			version1.DELETE("/rodeos/:id", rodeosHandler.DeleteRodeoHandler)
+		}
 	}
 
 	err := router.Run()

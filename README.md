@@ -11,6 +11,7 @@
 + [GoLand](https://www.jetbrains.com/go)
 + [GoSwagger](https://goswagger.io)
 + [GoDotEnv](https://github.com/joho/godotenv)
++ [Go JWT](https://github.com/golang-jwt/jwt)
 
 #### `instance/.env` File Format
 
@@ -18,6 +19,7 @@ MONGODB_URI=<<MongoDB Connection String>>
 MONGODB_DATABASE=<<MongoDB database name>>
 MONGODB_COLLECTION=<<MongoDB collection name>>
 PORT=<<Port number>>
+JWT_SECRET=<<random 16 character string>> 
 
 #### Episode 1
 Project setup
