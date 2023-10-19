@@ -19,7 +19,8 @@
 # MongoDB Atlas Configuration
 MONGODB_URI=<<MongoDB Connection String>>
 MONGODB_DATABASE=<<MongoDB database name>>
-MONGODB_COLLECTION=<<MongoDB collection name>>
+RODEO_COLLECTION=<<MongoDB collection name for rodeos>>
+USERS_COLLECTION=<<MongoDB collection name for users>>
 
 # Server Port
 PORT=<<Port number>>

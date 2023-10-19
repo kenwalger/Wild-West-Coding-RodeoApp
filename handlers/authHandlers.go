@@ -3,6 +3,9 @@ package handlers
 import (
 	"RodeoApp/models"
 	"github.com/gin-gonic/gin"
+	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/mongo"
+	"golang.org/x/net/context"
 	"net/http"
 	"os"
 	"time"
@@ -10,7 +13,17 @@ import (
 	"github.com/golang-jwt/jwt/v5"
 )
 
-type AuthHandler struct{}
+type AuthHandler struct {
+	collection *mongo.Collection
+	ctx        context.Context
+}
+
+func NewAuthHandler(ctx context.Context, collection *mongo.Collection) *AuthHandler {
+	return &AuthHandler{
+		collection: collection,
+		ctx:        ctx,
+	}
+}
 
 type Claims struct {
 	Username string `json:"username"`
@@ -56,8 +69,10 @@ func (handler *AuthHandler) SignInHandler(c *gin.Context) {
 		return
 	}
 
-	if user.Username != "admin" || user.Password != "password" {
-		c.JSON(http.StatusUnauthorized, gin.H{"Authorization error:": "Invalid username or password"})
+	err := handler.collection.FindOne(handler.ctx, bson.M{"username": user.Username, "password": user.Password}).Decode(&user)
+
+	if err != nil {
+		c.JSON(http.StatusUnauthorized, gin.H{"error: ": "invalid username or password"})
 		return
 	}
 

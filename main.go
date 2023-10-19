@@ -48,9 +48,10 @@ func init() {
 		log.Fatal(err)
 	}
 	log.Println("Connected to MongoDB Atlas.")
-	rodeoCollection := client.Database(os.Getenv("MONGODB_DATABASE")).Collection(os.Getenv("MONGODB_COLLECTION"))
+	rodeoCollection := client.Database(os.Getenv("MONGODB_DATABASE")).Collection(os.Getenv("RODEO_COLLECTION"))
 	rodeosHandler = handlers.NewRodeoHandler(ctx, rodeoCollection)
-	authHandler = &handlers.AuthHandler{}
+	usersCollection := client.Database(os.Getenv("MONGODB_DATABASE")).Collection(os.Getenv("USERS_COLLECTION"))
+	authHandler = handlers.NewAuthHandler(ctx, usersCollection)
 
 }
 
