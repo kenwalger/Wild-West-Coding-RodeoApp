@@ -3,10 +3,11 @@ package handlers
 import (
 	"RodeoApp/models"
 	"github.com/gin-gonic/gin"
-	"github.com/golang-jwt/jwt/v5"
 	"net/http"
 	"os"
 	"time"
+
+	"github.com/golang-jwt/jwt/v5"
 )
 
 type AuthHandler struct{}

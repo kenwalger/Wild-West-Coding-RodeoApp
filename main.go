@@ -85,9 +85,9 @@ func main() {
 		authorizedV1 := version1.Group("")
 		authorizedV1.Use(authHandler.AuthMiddleware())
 		{
-			version1.POST("/rodeos", rodeosHandler.NewRodeoHandler)
-			version1.PUT("/rodeos/:id", rodeosHandler.UpdateRodeoHandler)
-			version1.DELETE("/rodeos/:id", rodeosHandler.DeleteRodeoHandler)
+			authorizedV1.POST("/rodeos", rodeosHandler.NewRodeoHandler)
+			authorizedV1.PUT("/rodeos/:id", rodeosHandler.UpdateRodeoHandler)
+			authorizedV1.DELETE("/rodeos/:id", rodeosHandler.DeleteRodeoHandler)
 		}
 	}
 
