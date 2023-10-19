@@ -15,11 +15,18 @@
 
 #### `instance/.env` File Format
 
+```
+# MongoDB Atlas Configuration
 MONGODB_URI=<<MongoDB Connection String>>
 MONGODB_DATABASE=<<MongoDB database name>>
 MONGODB_COLLECTION=<<MongoDB collection name>>
+
+# Server Port
 PORT=<<Port number>>
+
+# Authorization Strings
 JWT_SECRET=<<random 16 character string>> 
+```
 
 #### Episode 1
 Project setup
@@ -44,3 +51,9 @@ API Routes
 
 + [YouTube](https://www.youtube.com/watch?v=nsYZB5jamMw)
 + [LinkedIn](https://www.linkedin.com/events/wwc4-apiroutesanddocumentation7105588023962058752/comments/)
+
+#### Episode 5
+Finish API endpoints, implement JWT authorization
+
+[YouTube]( https://www.youtube.com/watch?v=oYqZSAlTPs4&list=PL2k86RlAekM-15R1CeiACQDQ6imxFToIF&index=2)
+[LinkedIn]( https://www.linkedin.com/events/securingtheapi7112464363583676418/comments/)
