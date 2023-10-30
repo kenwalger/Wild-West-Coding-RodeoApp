@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"RodeoApp/models"
+	"RodeoApp/utils"
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -69,9 +70,17 @@ func (handler *AuthHandler) SignInHandler(c *gin.Context) {
 		return
 	}
 
-	err := handler.collection.FindOne(handler.ctx, bson.M{"username": user.Username, "password": user.Password}).Decode(&user)
+	var foundUser models.User
+
+	err := handler.collection.FindOne(handler.ctx, bson.M{"username": user.Username}).Decode(&foundUser)
 
 	if err != nil {
+		c.JSON(http.StatusUnauthorized, gin.H{"error: ": "invalid username or password"})
+		return
+	}
+
+	passwordIsValid := utils.CheckPasswordMatch(user.Password, foundUser.Password)
+	if passwordIsValid != true {
 		c.JSON(http.StatusUnauthorized, gin.H{"error: ": "invalid username or password"})
 		return
 	}

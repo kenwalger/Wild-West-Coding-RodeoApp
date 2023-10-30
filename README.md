@@ -56,5 +56,10 @@ API Routes
 #### Episode 5
 Finish API endpoints, implement JWT authorization
 
-[YouTube]( https://www.youtube.com/watch?v=oYqZSAlTPs4&list=PL2k86RlAekM-15R1CeiACQDQ6imxFToIF&index=2)
-[LinkedIn]( https://www.linkedin.com/events/securingtheapi7112464363583676418/comments/)
++ [YouTube]( https://www.youtube.com/watch?v=oYqZSAlTPs4&list=PL2k86RlAekM-15R1CeiACQDQ6imxFToIF&index=2)  
++ [LinkedIn]( https://www.linkedin.com/events/securingtheapi7112464363583676418/comments/)
+
+#### Episode 6
+Users & Password Hashing
++ [YouTube]()  
++ [LinkedIn](https://www.linkedin.com/events/users-passwordhashing7120080186661900288/comments/)
