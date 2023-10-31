@@ -76,6 +76,7 @@ func main() {
 	router.GET("/", IndexHandler)
 	router.GET("/:name", NameHandler)
 	router.POST("/signin", authHandler.SignInHandler)
+	router.POST("/refreshToken", authHandler.RefreshTokenHandler)
 
 	// API Version 1 endpoints and routes
 	version1 := router.Group("/api/v1")

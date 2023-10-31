@@ -123,3 +123,69 @@ func (handler *AuthHandler) AuthMiddleware() gin.HandlerFunc {
 		c.Next()
 	}
 }
+
+// swagger:operation POST /refreshToken auth refresh
+// Refresh the JWT
+// ---
+// parameter:
+//   - name: token
+//     in: JSON
+//     description: Expired JSON Web Token from the Authorization value in the POST header
+//     required: true
+//     type: string
+//
+// produces:
+// - application/json
+// reponses:
+//
+//	'200':
+//	    description: Successful token refresh
+//	'400':
+//	    description: Bad Request
+//	'401':
+//	    description: Unauthorized
+//	'500':
+//	    description: Internal Server Error
+func (handler *AuthHandler) RefreshTokenHandler(c *gin.Context) {
+	tokenValue := c.GetHeader("Authorization")
+	claims := &Claims{}
+	tkn, err := jwt.ParseWithClaims(
+		tokenValue,
+		claims,
+		func(token *jwt.Token) (interface{}, error) {
+			return []byte(os.Getenv("JWT_SECRET")), nil
+		})
+
+	if err != nil {
+		c.JSON(http.StatusUnauthorized, gin.H{"error: ": err.Error()})
+		return
+	}
+
+	if tkn == nil || !tkn.Valid {
+		c.JSON(http.StatusUnauthorized, gin.H{"error: ": "invalid token"})
+		return
+	}
+
+	if claims.ExpiresAt.Sub(time.Now()) > 60*time.Second {
+		c.JSON(http.StatusBadRequest, gin.H{"error: ": "token has not yet expired"})
+		return
+	}
+
+	expirationTime := time.Now().Add(2 * time.Minute)
+	claims.ExpiresAt = jwt.NewNumericDate(expirationTime)
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
+	tokenString, err := token.SignedString([]byte(os.Getenv("JWT_SECRET")))
+
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error: ": err.Error()})
+		return
+	}
+
+	jwtOutput := JWTOutput{
+		Token:   tokenString,
+		Expires: expirationTime,
+	}
+
+	c.JSON(http.StatusOK, jwtOutput)
+
+}
