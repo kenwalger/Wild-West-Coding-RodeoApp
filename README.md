@@ -61,5 +61,5 @@ Finish API endpoints, implement JWT authorization
 
 #### Episode 6
 Users & Password Hashing
-+ [YouTube]()  
++ [YouTube](https://www.youtube.com/watch?v=G5AMUFErcgw&list=PL2k86RlAekM-15R1CeiACQDQ6imxFToIF&index=7)  
 + [LinkedIn](https://www.linkedin.com/events/users-passwordhashing7120080186661900288/comments/)
