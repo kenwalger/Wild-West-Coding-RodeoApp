@@ -22,6 +22,8 @@ package main
 import (
 	handlers "RodeoApp/handlers"
 	"context"
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-contrib/sessions/mongo/mongodriver"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -55,28 +57,18 @@ func init() {
 
 }
 
-func IndexHandler(c *gin.Context) {
-
-	c.JSON(200, gin.H{
-		"message": "Hello World, welcome to Wild West Coding.",
-	})
-}
-
-func NameHandler(c *gin.Context) {
-	name := c.Params.ByName("name")
-	c.JSON(200, gin.H{
-		"message": "Hello " + name,
-	})
-}
-
 func main() {
 	router := gin.Default()
 	router.ForwardedByClientIP = true
 	router.SetTrustedProxies([]string{"127.0.0.1"})
-	router.GET("/", IndexHandler)
-	router.GET("/:name", NameHandler)
+
+	// Session Configuration
+	sessionCollection := client.Database(os.Getenv("MONGODB_DATABASE")).Collection(os.Getenv("SESSION_COLLECTION"))
+	store := mongodriver.NewStore(sessionCollection, 1800, true, []byte(os.Getenv("SESSION_SECRET")))
+	router.Use(sessions.Sessions("RodeoAppSession", store))
+
 	router.POST("/signin", authHandler.SignInHandler)
-	router.POST("/refreshToken", authHandler.RefreshTokenHandler)
+	router.POST("/signout", authHandler.SignOutHandler)
 
 	// API Version 1 endpoints and routes
 	version1 := router.Group("/api/v1")

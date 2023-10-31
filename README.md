@@ -12,6 +12,9 @@
 + [GoSwagger](https://goswagger.io)
 + [GoDotEnv](https://github.com/joho/godotenv)
 + [Go JWT](https://github.com/golang-jwt/jwt)
++ [Gin Sessions]( https://github.com/gin-contrib/sessions)
++ [GoLang xid – Globally Unique ID Generator]( https://pkg.go.dev/github.com/rs/xid)
+
 
 #### `instance/.env` File Format
 
