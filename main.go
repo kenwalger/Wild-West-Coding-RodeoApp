@@ -35,6 +35,7 @@ import (
 
 var authHandler *handlers.AuthHandler
 var rodeosHandler *handlers.RodeoHandler
+var webHandler *handlers.WebHandler
 var ctx context.Context
 var client *mongo.Client
 
@@ -67,6 +68,10 @@ func main() {
 	store := mongodriver.NewStore(sessionCollection, 1800, true, []byte(os.Getenv("SESSION_SECRET")))
 	router.Use(sessions.Sessions("RodeoAppSession", store))
 
+	// Web Routes
+	router.GET("/", webHandler.IndexHandler)
+
+	// API Auth routes
 	router.POST("/signin", authHandler.SignInHandler)
 	router.POST("/signout", authHandler.SignOutHandler)
 
@@ -89,4 +94,6 @@ func main() {
 	if err != nil {
 		return
 	}
+	router.LoadHTMLGlob("templates/")
+	router.Static("/assets", "./assets")
 }
