@@ -12,6 +12,9 @@
 + [GoSwagger](https://goswagger.io)
 + [GoDotEnv](https://github.com/joho/godotenv)
 + [Go JWT](https://github.com/golang-jwt/jwt)
++ [Gin Sessions]( https://github.com/gin-contrib/sessions)
++ [GoLang xid – Globally Unique ID Generator]( https://pkg.go.dev/github.com/rs/xid)
+
 
 #### `instance/.env` File Format
 
@@ -63,3 +66,8 @@ Finish API endpoints, implement JWT authorization
 Users & Password Hashing
 + [YouTube](https://www.youtube.com/watch?v=G5AMUFErcgw&list=PL2k86RlAekM-15R1CeiACQDQ6imxFToIF&index=7)  
 + [LinkedIn](https://www.linkedin.com/events/users-passwordhashing7120080186661900288/comments/)
+
+#### Episode 7
+Inedible Cookies
++ [YouTube](https://www.youtube.com/watch?v=anqXlL4EkVc&list=PL2k86RlAekM-15R1CeiACQDQ6imxFToIF&index=1&t=1s)
++ [LinkedIN](https://www.linkedin.com/events/inediblecookies7122360676488019969/comments/)
