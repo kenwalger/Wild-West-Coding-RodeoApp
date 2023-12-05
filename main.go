@@ -63,7 +63,10 @@ func init() {
 func main() {
 	router := gin.Default()
 	router.ForwardedByClientIP = true
-	router.SetTrustedProxies([]string{"127.0.0.1"})
+	err := router.SetTrustedProxies([]string{"127.0.0.1"})
+	if err != nil {
+		return
+	}
 	router.LoadHTMLGlob("templates/*")
 	router.Static("/assets", "./assets")
 
@@ -101,7 +104,7 @@ func main() {
 		}
 	}
 
-	err := router.Run()
+	err = router.Run()
 	if err != nil {
 		return
 	}

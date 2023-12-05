@@ -76,7 +76,10 @@ func (handler *AuthHandler) SignInHandler(c *gin.Context) {
 	session := sessions.Default(c)
 	session.Set("username", user.Username)
 	session.Set("token", sessionToken)
-	session.Save()
+	err = session.Save()
+	if err != nil {
+		return
+	}
 
 	c.JSON(http.StatusOK, gin.H{"message: ": "Howdy, you've been signed in."})
 }
@@ -93,10 +96,14 @@ func (handler *AuthHandler) SignInHandler(c *gin.Context) {
 func (handler *AuthHandler) SignOutHandler(c *gin.Context) {
 	session := sessions.Default(c)
 	session.Clear()
-	session.Save()
+	err := session.Save()
+	if err != nil {
+		return
+	}
 	c.JSON(http.StatusOK, gin.H{"message: ": "Thanks for stopping by. Happy Trails!"})
 }
 
+// AuthMiddleware Middleware for API authorization functionality
 func (handler *AuthHandler) AuthMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		session := sessions.Default(c)

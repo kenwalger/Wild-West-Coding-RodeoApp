@@ -51,6 +51,7 @@ func HashPassword(password string, params *Argon2Parameters) (encodedHash string
 	return encodedHash
 }
 
+// generateSalt returns a random salt that is `num` length
 func generateSalt(num uint32) ([]byte, error) {
 	salt := make([]byte, num)
 	_, err := rand.Read(salt)

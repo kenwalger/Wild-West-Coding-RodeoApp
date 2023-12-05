@@ -26,6 +26,8 @@ func NewUserHandler(ctx context.Context, collection *mongo.Collection) *UserHand
 	}
 }
 
+// hashing parameters for the Argon2 hashing algorithm
+// for passwords
 var hashingParams = &utils.Argon2Parameters{
 	Memory:      64 * 1024,
 	Iterations:  3,
@@ -34,6 +36,16 @@ var hashingParams = &utils.Argon2Parameters{
 	KeyLength:   32,
 }
 
+// swagger:operation GET /u/register user register
+// User registration page
+// ---
+//
+// produces:
+// - application/html
+// responses:
+//
+//	'200':
+//	    description: Successful web page rendering
 func (handler *UserHandler) ShowRegistrationPage(c *gin.Context) {
 	c.HTML(
 		http.StatusOK,
@@ -44,6 +56,17 @@ func (handler *UserHandler) ShowRegistrationPage(c *gin.Context) {
 	)
 }
 
+// swagger:operation POST /u/register user register
+// Successful user registration
+// ---
+// produces:
+// - application/html
+// responses:
+//
+//	'200':
+//	    description: Successful user registration
+//	'400':
+//	    description: Unable to register user
 func (handler *UserHandler) RegisterUser(c *gin.Context) {
 	// Obtain form data
 	username := c.PostForm("userName")
@@ -58,7 +81,10 @@ func (handler *UserHandler) RegisterUser(c *gin.Context) {
 		session.Set("username", username)
 		session.Set("token", sessionToken)
 		session.Set("is_logged_in", true)
-		session.Save()
+		err := session.Save()
+		if err != nil {
+			return
+		}
 		c.HTML(http.StatusOK,
 			"successful-login.tmpl",
 			gin.H{"title": "Successful Login",
@@ -75,6 +101,9 @@ func (handler *UserHandler) RegisterUser(c *gin.Context) {
 	}
 }
 
+// registerNewUser adds a user to the database
+// if successful returns the user object and no error
+// if unsuccessful returns no user object and the specific error as to why the registration doesn't work
 func (handler *UserHandler) registerNewUser(username, email, password, repeatpassword string) (*models.User, error) {
 	if strings.TrimSpace(password) == "" {
 		return nil, errors.New("password cannot be empty")
@@ -102,6 +131,9 @@ func (handler *UserHandler) registerNewUser(username, email, password, repeatpas
 	return &u, nil
 }
 
+// isUserNameAvailable checks to see if the username already exists in the database
+// returns true if the username is available
+// returns false if the username is already taken
 func (handler *UserHandler) isUserNameAvailable(username string) bool {
 	var foundUser models.User
 
