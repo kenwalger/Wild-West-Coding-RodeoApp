@@ -62,6 +62,8 @@ func main() {
 	router := gin.Default()
 	router.ForwardedByClientIP = true
 	router.SetTrustedProxies([]string{"127.0.0.1"})
+	router.LoadHTMLGlob("templates/*")
+	router.Static("/assets", "./assets")
 
 	// Session Configuration
 	sessionCollection := client.Database(os.Getenv("MONGODB_DATABASE")).Collection(os.Getenv("SESSION_COLLECTION"))
@@ -94,6 +96,5 @@ func main() {
 	if err != nil {
 		return
 	}
-	router.LoadHTMLGlob("templates/")
-	router.Static("/assets", "./assets")
+
 }
