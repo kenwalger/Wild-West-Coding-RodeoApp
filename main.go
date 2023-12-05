@@ -36,6 +36,7 @@ import (
 var authHandler *handlers.AuthHandler
 var rodeosHandler *handlers.RodeoHandler
 var webHandler *handlers.WebHandler
+var userHandler *handlers.UserHandler
 var ctx context.Context
 var client *mongo.Client
 
@@ -55,6 +56,7 @@ func init() {
 	rodeosHandler = handlers.NewRodeoHandler(ctx, rodeoCollection)
 	usersCollection := client.Database(os.Getenv("MONGODB_DATABASE")).Collection(os.Getenv("USERS_COLLECTION"))
 	authHandler = handlers.NewAuthHandler(ctx, usersCollection)
+	userHandler = handlers.NewUserHandler(ctx, usersCollection)
 
 }
 
@@ -72,6 +74,13 @@ func main() {
 
 	// Web Routes
 	router.GET("/", webHandler.IndexHandler)
+
+	// User Routes
+	userRoutes := router.Group("/u")
+	{
+		userRoutes.GET("/register", userHandler.ShowRegistrationPage)
+		userRoutes.POST("/register", userHandler.RegisterUser)
+	}
 
 	// API Auth routes
 	router.POST("/signin", authHandler.SignInHandler)

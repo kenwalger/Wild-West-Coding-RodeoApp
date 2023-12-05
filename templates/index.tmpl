@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Rodeo App | {{ .title }}</title>
-</head>
-<body>
+{{ template "header" . }}
+{{ template "navigation" . }}
+
 <h1>Rodeo App | {{ .title }}</h1>
 <p>A Wild West Coder Project</p>
 
-{{ template "footer" }}
+{{ template "footer" . }}
