@@ -37,7 +37,7 @@ var hashingParams = &utils.Argon2Parameters{
 }
 
 // swagger:operation GET /u/register user register
-// User registration page
+// User registration web page
 // ---
 //
 // produces:
@@ -56,8 +56,8 @@ func (handler *UserHandler) ShowRegistrationPage(c *gin.Context) {
 	)
 }
 
-// swagger:operation POST /u/register user register
-// Successful user registration
+// swagger:operation POST /u/register user registerUser
+// Processed user registration web page
 // ---
 // produces:
 // - application/html
