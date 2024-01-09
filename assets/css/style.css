@@ -48,6 +48,7 @@ ul li img {
 a, p {
     color: #4C2923;
     line-height: 130%;
+    text-align: center;
 }
 
 .bold {
@@ -61,6 +62,23 @@ a, p {
     background-position: center;
     margin: 40px auto 60px auto;
     padding: 10px;
+}
+
+.trail {
+    background-image: url(../img/trail.jpg);
+    width: 400px;
+    height: 533px;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 10px auto 10px auto;
+    padding: 10px;
+}
+
+.error {
+    color: red;
+    font-family: 'Lato', sans-serif;
 }
 
 footer {

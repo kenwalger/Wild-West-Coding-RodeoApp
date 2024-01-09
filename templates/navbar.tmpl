@@ -5,7 +5,7 @@
     <ul class="nav navbar-nav navbar-right">
     <li><a href="/">Home</a></li>
     <li><a href="/u/register">Register</a></li>
-    {{ if .logged_in }}
+    {{ if .isLoggedIn }}
     <li><a href="/u/logout">Logout</a></li>
     {{ else }}
     <li><a href="/u/login">Login</a></li>

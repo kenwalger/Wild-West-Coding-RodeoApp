@@ -104,10 +104,10 @@ func (handler *UserHandler) RegisterUser(c *gin.Context) {
 // registerNewUser adds a user to the database
 // if successful returns the user object and no error
 // if unsuccessful returns no user object and the specific error as to why the registration doesn't work
-func (handler *UserHandler) registerNewUser(username, email, password, repeatpassword string) (*models.User, error) {
+func (handler *UserHandler) registerNewUser(username, email, password, repeatPassword string) (*models.User, error) {
 	if strings.TrimSpace(password) == "" {
 		return nil, errors.New("password cannot be empty")
-	} else if strings.TrimSpace(password) != strings.TrimSpace(repeatpassword) {
+	} else if strings.TrimSpace(password) != strings.TrimSpace(repeatPassword) {
 		return nil, errors.New("passwords don't match")
 	} else if !handler.isUserNameAvailable(username) {
 		return nil, errors.New("username already exists")

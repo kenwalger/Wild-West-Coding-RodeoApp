@@ -40,6 +40,9 @@ Generate spec
 Start documentation server (port 53065 by default)
 `swagger serve ./swagger.json`
 
+Different format (port 64761 by default)
+`swagger serve -F swagger ./swagger.json`
+
 Generate spec in markdown
 `swagger generate markdown -f ./swagger.json --output swagger.md`
 
@@ -86,5 +89,10 @@ Inedible Cookies
 
 #### Episode 8
 Templates & Data Passing
-+ [YouTube]()
++ [YouTube](https://www.youtube.com/watch?v=8lnss4xnpwY)
 + [LinkedIn](https://www.linkedin.com/events/7137830678917746688/comments/)
+
+#### Episode 9
+Year End Celebration - **NOT** a Rodeo App episode, but still fun.
++ [YouTube](https://www.youtube.com/watch?v=C3hkqD1kmb8&t=1s)
++ [LinkedIn](https://www.linkedin.com/events/yearendcelebration-wwc20237139034900170493952/comments/)

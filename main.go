@@ -2,6 +2,7 @@
 //
 // This is a sample API about rodeos. Additional information can be found at
 // https://github.com/kenwalger/Wild-West-Coding-RodeoApp
+// For the `rodeos` path, use the /api/v1/ prefix.
 //
 // Schemes: http
 // Host: localhost:8080
