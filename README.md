@@ -12,6 +12,10 @@
 + [GoSwagger](https://goswagger.io)
 + [GoDotEnv](https://github.com/joho/godotenv)
 + [Go JWT](https://github.com/golang-jwt/jwt)
++ [Gin Sessions]( https://github.com/gin-contrib/sessions)
++ [GoLang xid – Globally Unique ID Generator]( https://pkg.go.dev/github.com/rs/xid)
++ [Argon2 hashing](https://pkg.go.dev/golang.org/x/crypto/argon2)
+
 
 #### `instance/.env` File Format
 
@@ -29,6 +33,20 @@ PORT=<<Port number>>
 JWT_SECRET=<<random 16 character string>> 
 ```
 
+#### Swagger
+Generate spec
+`swagger generate spec -o ./swagger.json`
+
+Start documentation server (port 53065 by default)
+`swagger serve ./swagger.json`
+
+Different format (port 64761 by default)
+`swagger serve -F swagger ./swagger.json`
+
+Generate spec in markdown
+`swagger generate markdown -f ./swagger.json --output swagger.md`
+
+### Recordings
 #### Episode 1
 Project setup
 
@@ -56,10 +74,25 @@ API Routes
 #### Episode 5
 Finish API endpoints, implement JWT authorization
 
-+ [YouTube]( https://www.youtube.com/watch?v=oYqZSAlTPs4&list=PL2k86RlAekM-15R1CeiACQDQ6imxFToIF&index=2)  
++ [YouTube]( https://www.youtube.com/watch?v=oYqZSAlTPs4&list=PL2k86RlAekM-15R1CeiACQDQ6imxFToIF&index=2)
 + [LinkedIn]( https://www.linkedin.com/events/securingtheapi7112464363583676418/comments/)
 
 #### Episode 6
 Users & Password Hashing
-+ [YouTube](https://www.youtube.com/watch?v=G5AMUFErcgw&list=PL2k86RlAekM-15R1CeiACQDQ6imxFToIF&index=7)  
++ [YouTube](https://www.youtube.com/watch?v=G5AMUFErcgw&list=PL2k86RlAekM-15R1CeiACQDQ6imxFToIF&index=7)
 + [LinkedIn](https://www.linkedin.com/events/users-passwordhashing7120080186661900288/comments/)
+
+#### Episode 7
+Inedible Cookies
++ [YouTube](https://www.youtube.com/watch?v=anqXlL4EkVc&list=PL2k86RlAekM-15R1CeiACQDQ6imxFToIF&index=1&t=1s)
++ [LinkedIn](https://www.linkedin.com/events/inediblecookies7122360676488019969/comments/)
+
+#### Episode 8
+Templates & Data Passing
++ [YouTube]()
++ [LinkedIn](https://www.linkedin.com/events/7137830678917746688/comments/)
+
+#### Episode 9
+Year End Celebration - **NOT** a Rodeo App episode, but still fun.
++ [YouTube](https://www.youtube.com/watch?v=C3hkqD1kmb8&t=1s)
++ [LinkedIn](https://www.linkedin.com/events/yearendcelebration-wwc20237139034900170493952/comments/)

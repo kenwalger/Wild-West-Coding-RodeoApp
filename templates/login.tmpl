@@ -1,0 +1,25 @@
+{{ template "header" . }}
+{{ template "navigation" .}}
+<div class="sign">
+<h1>Login</h1>
+<p>Rodeo App</p>
+{{ if .ErrorTitle }}
+<br>
+	<p class="error">
+	{{ .ErrorTitle }}: {{ .ErrorMessage }}
+	</p>
+{{ end }}
+</div>
+<form class="form" action="/u/login" method="POST" name="userLogin">
+
+<label for="userName"><b>User Name</b></label>
+<input type="text" placeholder="Enter User Name" name="userName" id="username" required aria-required="true">
+<br>
+<label for="psw"><b>Password</b></label>
+<input type="password" placeholder="Enter Password" name="psw" id="psw" required aria-required="true">
+<br>
+<button type="submit" class="loginbtn button--secondary">Login</button>
+
+</form>
+
+{{ template "footer" . }}

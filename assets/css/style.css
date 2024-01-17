@@ -1,0 +1,272 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    /* Retina-wood texture is from Subtle Patterns (https://www.toptal.com/designers/subtlepatterns/) Pattern made by Brandi Leath */
+    font-family: 'Lato', sans-serif;
+    background: #EADFC9 url(../img/retina_wood.png) repeat;
+    background-size: 30%, auto;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #8C001C;
+    text-align: center;
+    font-family: 'Rye', cursive;
+    font-size: 36px;
+    margin-bottom: 0;
+}
+
+h2 {
+    font-family: 'Rye', cursive;
+    color: #4C2923;
+    margin-top: 0;
+}
+
+ul {
+    list-style:none;
+    margin: 0 auto;
+    padding: 0;
+    display: block;
+    max-width: 780px;
+    text-align: center;
+}
+
+ul li {
+    display: inline-block;
+    padding: 8px;
+    background:white;
+    margin:10px;
+}
+
+ul li img {
+    display: block;
+}
+
+a, p {
+    color: #4C2923;
+    line-height: 130%;
+    text-align: center;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.sign {
+    background-image: url(../img/lassosandlaptops.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 40px auto 60px auto;
+    padding: 10px;
+}
+
+.trail {
+    background-image: url(../img/trail.jpg);
+    width: 400px;
+    height: 533px;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 10px auto 10px auto;
+    padding: 10px;
+}
+
+.error {
+    color: red;
+    font-family: 'Lato', sans-serif;
+}
+
+footer {
+    max-width: 800px;
+    font-size: 10px;
+    text-align: center;
+}
+
+.sign p {
+    text-align: center;
+    font-family: 'Rye', cursive;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.nav {
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+}
+
+.nav li {
+    background-color: #f5f0e6;
+    color: #f5f0e6;
+    transition: background-color .5s ease;
+}
+
+.nav li:hover {
+    background-color: #9c8566;
+}
+
+.featured {
+    max-width: 800px;
+    margin: auto;
+    background-color: #f5f0e6;
+    padding: 20px;
+    border: 8px double #D3C8BF;
+}
+
+.featured-img {
+    display: inline-block;
+}
+
+.featured-img img {
+    width: 100%;
+}
+
+.featured-text {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.links {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.button {
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.button--primary {
+    background-color: #f5f0e6;
+    color: #f5f0e6;
+    transition: background-color .5s ease;
+}
+
+.mandatory {
+    color: red;
+    font-size: small;
+}
+
+.button--primary:hover {
+    background-color: #311b17;
+}
+
+.button--secondary {
+    border: 2px solid #9c8566;
+    color: #9c8566;
+    transition: background-color .5s ease;
+}
+
+.button--secondary:hover {
+    background-color: #9c8566;
+    color: #f5f0e6;
+}
+
+.card-wrap {
+    margin-top: 60px;
+    max-width: 1200px;
+}
+
+.card {
+    background-color: #f5f0e6;
+    width: 12%;
+    font-size: 14px;
+    min-height: 190px;
+    vertical-align: top;
+    color: #4C2923;
+    background-image: url(../img/line.svg);
+    background-repeat: no-repeat;
+    background-position: center 163px;
+    border: 4px double #D3C8BF;
+    word-wrap: break-word;
+}
+
+.card img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    object-position: top;
+}
+
+.credits {
+    text-align: center;
+    margin: 40px;
+}
+
+/*Form Styling*/
+
+form {
+    margin: 50px;
+}
+
+.form-item {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 0 30px;
+}
+
+.form-item label {
+    display: block;
+    margin: 0 0 10px;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+
+.form-item input[type="text"] {
+    display: block;
+    background: rgba(222, 203, 172, .5);
+    width: 100%;
+    border: 2px solid rgba(76, 41, 35, 0);
+    border-radius: 4px;
+    padding: 12px 20px;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+.form-item input[type="text"]:focus {
+    border: 2px solid rgba(76, 41, 35, 1);
+    outline: none;
+}
+
+.form-item .button {
+    width: 100%;
+    border: 0;
+    border-radius: 4px;
+    padding: 12px 20px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 1200px) {
+    h1 {
+        font-size: 36px;
+    }
+    .card {
+        width: 20%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .card {
+        width: 30%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .card {
+        width: 40%;
+    }
+}

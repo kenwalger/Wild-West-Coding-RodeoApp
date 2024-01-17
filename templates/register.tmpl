@@ -1,0 +1,36 @@
+{{ template "header" . }}
+{{ template "navigation" .}}
+
+<div class="sign">
+<h1>Registration</h1>
+<p>Rodeo App</p>
+{{ if .ErrorTitle }}
+    <br>
+	<p>
+	{{ .ErrorTitle }}: {{ .ErrorMessage }}
+	</p>
+{{ end }}
+</div>
+
+<form class="form" action="/u/register" method="POST" name="userRegistration">
+
+<p>Please fill in this form to create an account.</p>
+<p class="mandatory">* Indicates required field.</p>
+
+<label for="username"><b>User Name</b> <span class="mandatory">*</span></label>
+<input type="text" placeholder="Enter User Name" name="userName" id="username" required aria-required="true">
+<br>
+<label for="email"><b>Email</b> <span class="mandatory">*</span></label>
+<input type="text" placeholder="Enter Email" name="email" id="email" required aria-required="true">
+<br>
+<label for="psw"><b>Password</b> <span class="mandatory">*</span></label>
+<input type="password" placeholder="Enter Password" name="psw" id="psw" required aria-required="true">
+<br>
+<label for="psw-repeat"><b>Repeat Password</b> <span class="mandatory">*</span></label>
+<input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required aria-required="true">
+</br>
+<button type="submit" class="registerbtn button--secondary">Register</button>
+
+</form>
+
+{{ template "footer" . }}

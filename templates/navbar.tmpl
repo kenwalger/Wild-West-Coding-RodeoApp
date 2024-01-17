@@ -1,0 +1,17 @@
+{{ define "navigation" }}
+
+<nav class="navbar" role="navigation">
+    <div class="topnav">
+    <ul class="nav navbar-nav navbar-right">
+    <li><a href="/">Home</a></li>
+    <li><a href="/u/register">Register</a></li>
+    {{ if .isLoggedIn }}
+    <li><a href="/u/logout">Logout</a></li>
+    {{ else }}
+    <li><a href="/u/login">Login</a></li>
+    {{ end }}
+    </ul>
+    </div>
+    </nav>
+
+{{ end }}

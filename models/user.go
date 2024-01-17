@@ -9,6 +9,10 @@ type User struct {
 	//
 	// required:true
 	Username string `json:"username"`
+	// User's email
+	//
+	// required:true
+	Email string `json:"email"`
 	// User's password
 	//
 	// required:true
