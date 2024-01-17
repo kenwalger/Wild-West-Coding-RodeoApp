@@ -89,7 +89,7 @@ Inedible Cookies
 
 #### Episode 8
 Templates & Data Passing
-+ [YouTube](https://www.youtube.com/watch?v=8lnss4xnpwY)
++ [YouTube]()
 + [LinkedIn](https://www.linkedin.com/events/7137830678917746688/comments/)
 
 #### Episode 9
