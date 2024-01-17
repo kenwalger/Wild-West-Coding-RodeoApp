@@ -18,8 +18,12 @@
 
 
 #### `instance/.env` File Format
+The application relies on environment variables for the database connection,
+and JWT generation. These variables are accessed through the GoDotEnv package
+(see above for link) and stored in a `.env` file in an `instance` directory.
+The format is as follows:
 
-```
+```text
 # MongoDB Atlas Configuration
 MONGODB_URI=<<MongoDB Connection String>>
 MONGODB_DATABASE=<<MongoDB database name>>
@@ -89,7 +93,7 @@ Inedible Cookies
 
 #### Episode 8
 Templates & Data Passing
-+ [YouTube]()
++ YouTube
 + [LinkedIn](https://www.linkedin.com/events/7137830678917746688/comments/)
 
 #### Episode 9
