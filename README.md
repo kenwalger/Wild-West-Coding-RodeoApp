@@ -2,13 +2,16 @@
 
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![GitHub Repo stars](https://img.shields.io/github/stars/kenwalger/Wild-West-Coding-RodeoApp)
+![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/kenwalger/Wild-West-Coding-RodeoApp)
+
 
 ### Project Resources
 
 + [Postman](https://www.postman.com)
 + [MongoDB Atlas](https://www.mongodb.com/atlas/database) as the database platform
 + [MongoDB Compass](https://www.mongodb.com/products/compass) GUI for data exploration
-+ [GoLand](https://www.jetbrains.com/go)
++ [GoLand](https://www.jetbrains.com/go) IDE for Go
 + [GoSwagger](https://goswagger.io)
 + [GoDotEnv](https://github.com/joho/godotenv)
 + [Go JWT](https://github.com/golang-jwt/jwt)
