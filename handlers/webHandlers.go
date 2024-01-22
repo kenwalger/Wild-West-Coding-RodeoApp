@@ -22,5 +22,11 @@ var year = date.Year()
 //	'200':
 //	    description: Successful rendering of the index page
 func (handler *WebHandler) IndexHandler(c *gin.Context) {
-	c.HTML(http.StatusOK, "index.tmpl", gin.H{"title": "Home"})
+	c.HTML(
+		http.StatusOK,
+		"index.tmpl",
+		gin.H{"title": "Home",
+			"year": year,
+		},
+	)
 }
