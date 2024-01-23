@@ -75,20 +75,12 @@ func (handler *UserHandler) RegisterUser(c *gin.Context) {
 	repeatPassword := c.PostForm("psw-repeat")
 
 	if _, err := handler.registerNewUser(username, email, password, repeatPassword); err == nil {
-		// Session information
-		sessionToken := xid.New().String()
-		session := sessions.Default(c)
-		session.Set("username", username)
-		session.Set("token", sessionToken)
-		session.Set("is_logged_in", true)
-		err := session.Save()
-		if err != nil {
-			return
-		}
+
 		c.HTML(http.StatusOK,
-			"successful-login.tmpl",
-			gin.H{"title": "Successful Login",
-				"year": year})
+			"login.tmpl",
+			gin.H{"title": "Login",
+				"year":    year,
+				"Message": "Thanks for registering. Please Login."})
 	} else {
 		c.HTML(http.StatusBadRequest,
 			"register.tmpl",
@@ -144,4 +136,126 @@ func (handler *UserHandler) isUserNameAvailable(username string) bool {
 	}
 
 	return false
+}
+
+func (handler *UserHandler) Login(c *gin.Context) {
+	c.HTML(
+		http.StatusOK,
+		"login.tmpl",
+		gin.H{
+			"title": "Login",
+			"year":  year,
+		})
+}
+
+func (handler *UserHandler) ProcessLogin(c *gin.Context) {
+	// Get from data
+	username := c.PostForm("userName")
+	password := c.PostForm("psw")
+
+	// Check for blank input
+	if username == "" {
+		c.HTML(http.StatusBadRequest,
+			"login.tmpl",
+			gin.H{
+				"title":        "Login",
+				"year":         year,
+				"ErrorTitle":   "Login Failed",
+				"ErrorMessage": "Username required.",
+			})
+	} else if password == "" {
+		c.HTML(http.StatusBadRequest,
+			"login.tmpl",
+			gin.H{
+				"title":        "Login",
+				"year":         year,
+				"ErrorTitle":   "Login Failed",
+				"ErrorMessage": "Password required.",
+			})
+	}
+
+	// Verify User Credentials
+	_, err, verifiedUser := handler.VerifyUser(username, password)
+	if err != nil {
+		c.HTML(http.StatusBadRequest,
+			"login.tmpl",
+			gin.H{
+				"title":        "Login",
+				"year":         year,
+				"ErrorTitle":   "Login Failed",
+				"ErrorMessage": err,
+			})
+	} else if !verifiedUser {
+		c.HTML(http.StatusBadRequest,
+			"login.tmpl",
+			gin.H{
+				"title":        "Login",
+				"year":         year,
+				"ErrorTitle":   "Login Failed",
+				"ErrorMessage": "Incorrect Login",
+			})
+	} else {
+
+		// Generate session information
+		sessionToken := xid.New().String()
+		session := sessions.Default(c)
+		session.Set("username", username)
+		session.Set("token", sessionToken)
+		session.Set("isLoggedIn", true)
+		err = session.Save()
+		if err != nil {
+			return
+		}
+		// Redirect to Successful-Login page
+		c.HTML(http.StatusBadRequest,
+			"successful-login.tmpl",
+			gin.H{
+				"title":      "Successful Login",
+				"year":       year,
+				"isLoggedIn": true,
+			})
+	}
+}
+
+func (handler *UserHandler) VerifyUser(username, password string) (user *models.User, err error, verified bool) {
+	var foundUser models.User
+	err = handler.collection.FindOne(handler.ctx, bson.M{"username": username}).Decode(&foundUser)
+	if err != nil {
+		return nil, errors.New("username not found"), false
+	}
+	// Check password
+	if !utils.CheckPasswordMatch(password, foundUser.Password) {
+		return nil, errors.New("incorrect password"), false
+	}
+
+	// Do other things such as check password age, user information update request, etc.
+
+	u := models.User{
+		Username: username,
+		Email:    foundUser.Email,
+		Password: foundUser.Password,
+	}
+
+	return &u, nil, true
+}
+
+func (handler *UserHandler) Logout(c *gin.Context) {
+	// Clear Session
+	session := sessions.Default(c)
+	session.Clear()
+	err := session.Save()
+	if err != nil {
+		return
+	}
+
+	// Redirect to home page
+	c.HTML(
+		http.StatusOK,
+		"index.tmpl",
+		gin.H{
+			"title":      "Home",
+			"year":       year,
+			"isLoggedIn": false,
+			"Message":    "You have successfully logged out. Happy Trails.",
+		})
 }

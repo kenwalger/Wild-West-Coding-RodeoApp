@@ -10,6 +10,11 @@
 	</p>
 {{ end }}
 </div>
+{{ if .Message }}
+<div>
+    {{ .Message }}
+</div>
+{{ end }}
 <form class="form" action="/u/login" method="POST" name="userLogin">
 
 <label for="userName"><b>User Name</b></label>

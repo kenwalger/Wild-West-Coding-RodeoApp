@@ -30,7 +30,9 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"go.mongodb.org/mongo-driver/mongo/readpref"
 	"log"
+	"net/http"
 	"os"
+	"time"
 )
 
 var authHandler *handlers.AuthHandler
@@ -60,6 +62,10 @@ func init() {
 
 }
 
+// main is the entry point of the application.
+//
+// It initializes a Gin router, sets up session configuration, defines web and API routes,
+// and runs the router.
 func main() {
 	router := gin.Default()
 	router.ForwardedByClientIP = true
@@ -83,6 +89,9 @@ func main() {
 	{
 		userRoutes.GET("/register", userHandler.ShowRegistrationPage)
 		userRoutes.POST("/register", userHandler.RegisterUser)
+		userRoutes.GET("/login", userHandler.Login)
+		userRoutes.POST("/login", userHandler.ProcessLogin)
+		userRoutes.GET("/logout", userHandler.Logout)
 	}
 
 	// API Auth routes
@@ -103,6 +112,13 @@ func main() {
 			authorizedV1.DELETE("/rodeos/:id", rodeosHandler.DeleteRodeoHandler)
 		}
 	}
+
+	router.NoRoute(func(c *gin.Context) {
+		c.HTML(http.StatusNotFound,
+			"404.tmpl",
+			gin.H{"title": "404 - Page Not Found",
+				"year": time.Now().Year()})
+	})
 
 	err = router.Run()
 	if err != nil {
