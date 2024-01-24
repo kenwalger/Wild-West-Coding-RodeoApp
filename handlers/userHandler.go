@@ -138,6 +138,15 @@ func (handler *UserHandler) isUserNameAvailable(username string) bool {
 	return false
 }
 
+// swagger:operation GET /u/login user loginUser
+// User login web page
+// ---
+// produces:
+// - application/html
+// responses:
+//
+//	'200':
+//	    description: Successful login page rendering
 func (handler *UserHandler) Login(c *gin.Context) {
 	c.HTML(
 		http.StatusOK,
@@ -148,6 +157,17 @@ func (handler *UserHandler) Login(c *gin.Context) {
 		})
 }
 
+// swagger:operation POST /u/login user processLogin
+// Process the user login web page
+// ---
+// produces:
+// - application/html
+// responses:
+//
+//	'200':
+//	    description: Successful user login
+//	'400':
+//	    description: Unable to register user
 func (handler *UserHandler) ProcessLogin(c *gin.Context) {
 	// Get from data
 	username := c.PostForm("userName")
@@ -217,6 +237,10 @@ func (handler *UserHandler) ProcessLogin(c *gin.Context) {
 	}
 }
 
+// VerifyUser checks to see if the username and password are registered
+// and correct from the data passed from the user
+// returns true if the information is valid
+// returns false if the information is invalid
 func (handler *UserHandler) VerifyUser(username, password string) (user *models.User, err error, verified bool) {
 	var foundUser models.User
 	err = handler.collection.FindOne(handler.ctx, bson.M{"username": username}).Decode(&foundUser)
@@ -239,6 +263,15 @@ func (handler *UserHandler) VerifyUser(username, password string) (user *models.
 	return &u, nil, true
 }
 
+// swagger:operation GET /u/logout user logoutUser
+// User logout web page
+// ---
+// produces:
+// - application/html
+// responses:
+//
+//	'200':
+//	    description: Successful logout and redirect to home page.
 func (handler *UserHandler) Logout(c *gin.Context) {
 	// Clear Session
 	session := sessions.Default(c)
