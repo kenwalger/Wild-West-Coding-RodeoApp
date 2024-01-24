@@ -34,7 +34,7 @@ func NewAuthHandler(ctx context.Context, collection *mongo.Collection) *AuthHand
 //     required: true
 //     type: string
 //   - name: password
-//     in: json
+//     in: header
 //     description: password
 //     required: true
 //     type: string

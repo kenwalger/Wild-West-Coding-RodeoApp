@@ -5,6 +5,7 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/kenwalger/Wild-West-Coding-RodeoApp)
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/kenwalger/Wild-West-Coding-RodeoApp)
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/kenwalger/Wild-West-Coding-RodeoApp/main)
+![Swagger Validator](https://img.shields.io/swagger/valid/3.0)
 
 
 ### Project Resources

@@ -1,0 +1,201 @@
+{
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a sample API about rodeos. Additional information can be found at\nhttps://github.com/kenwalger/Wild-West-Coding-RodeoApp",
+    "title": "Rodeos API",
+    "contact": {
+      "name": "Ken W. Alger",
+      "email": "kealger@cisco.com"
+    },
+    "version": "1.0.0"
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "paths": {
+    "/": {
+      "get": {
+        "description": "The application index page",
+        "produces": [
+          "application/html"
+        ],
+        "tags": [
+          "web"
+        ],
+        "operationId": "index",
+        "responses": {
+          "200": {"description":  "Successful return of the index page."}
+        }
+      }
+    },
+    "/rodeos": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "rodeos"
+        ],
+        "summary": "Responds with the list of all rodeos as JSON.",
+        "operationId": "ListRodeos",
+        "responses": {
+          "200": {"description":  "Returns all of the rodeos from the database."}
+        }
+      },
+      "post": {
+        "description": "Insert a new rodeo into the database from JSON received in\nthe request body, returns the new rodeo as a response.",
+        "tags": [
+          "rodeos"
+        ],
+        "operationId": "insertRodeo",
+        "responses": {
+          "200": {"description":  "Successful insertion of new rodeo."},
+          "400": {"description":  "Invalid format or input."},
+          "500": {"description":  "Internal Server Error."}
+        }
+      }
+    },
+    "/rodeos/{id}": {
+      "get": {
+        "description": "Locate the rodeo whose ID value matches the ID parameter\nsent by the client, then returns the rodeo as a response.",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "rodeos"
+        ],
+        "operationId": "oneRodeo",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "ID of the rodeo",
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {"description":  "Successful return of a single rodeo."},
+          "500": {"description":  "Internal server error."}
+        }
+      },
+      "put": {
+        "description": "Update an existing rodeo whose ID value matches the ID parameter\nsent by the client with the request body from the PUT request, then\nreturn the updated rodeo as a response.",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "rodeos"
+        ],
+        "operationId": "updateRodeo",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "ID of the rodeo",
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {"description":  "Successful update of a single rodeo."},
+          "400": {"description":  "Invalid input."},
+          "404": {"description":  "Invalid rodeo ID."}
+        }
+      },
+      "delete": {
+        "description": "Locate the rodeo whose ID value matches the ID parameter\nsent by the client, delete the rodeo from the database,\nreturn a successful deletion message.",
+        "tags": [
+          "rodeos"
+        ],
+        "operationId": "deleteRodeo",
+        "responses": {
+          "200": {"description":  "Successful deletion of a single rodeo."},
+          "500": {"description":  "Internal server error."}
+        }
+      }
+    },
+    "/signin": {
+      "post": {
+        "description": "Login with username and password",
+        "tags": [
+          "auth"
+        ],
+        "operationId": "signIn",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "username",
+            "name": "username",
+            "in": "header" ,
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "password",
+            "name": "password",
+            "in": "header",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {"description":  "Successful sign in operation."},
+          "400": {"description": "Bad request"},
+          "401": {"description":  "Unauthorized - invalid credentials"}
+        }
+      }
+    },
+    "/signout": {
+      "post": {
+        "description": "Sign out of the application",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "auth"
+        ],
+        "operationId": "signout",
+        "responses": {
+          "200": {"description":  "Successful signout from the API."}
+        }
+      }
+    },
+    "/u/register": {
+      "get": {
+        "description": "User registration web page",
+        "produces": [
+          "application/html"
+        ],
+        "tags": [
+          "user"
+        ],
+        "operationId": "register",
+        "responses": {
+          "200": {"description":  "Successful web page registration."}
+        }
+      },
+      "post": {
+        "description": "Processed user registration web page",
+        "produces": [
+          "application/html"
+        ],
+        "tags": [
+          "user"
+        ],
+        "operationId": "registerUser",
+        "responses": {
+          "200": {"description":  "Successful user registration."},
+          "400": {"description":  "Unable to register user"}
+        }
+      }
+    }
+  }
+}
