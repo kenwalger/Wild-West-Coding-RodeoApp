@@ -4,6 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![GitHub Repo stars](https://img.shields.io/github/stars/kenwalger/Wild-West-Coding-RodeoApp)
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/kenwalger/Wild-West-Coding-RodeoApp)
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/kenwalger/Wild-West-Coding-RodeoApp/main)
 
 
 ### Project Resources
@@ -103,3 +104,12 @@ Templates & Data Passing
 Year End Celebration - **NOT** a Rodeo App episode, but still fun.
 + [YouTube](https://www.youtube.com/watch?v=C3hkqD1kmb8&t=1s)
 + [LinkedIn](https://www.linkedin.com/events/yearendcelebration-wwc20237139034900170493952/comments/)
+
+#### Episode 10
+User Login & Logout Page & Routes
++ [Youtube](https://www.youtube.com/watch?v=guGxaRcozvM&list=PL2k86RlAekM-15R1CeiACQDQ6imxFToIF)
++ [LinkedIn](https://www.linkedin.com/events/7153155292778647554/comments/)
+
+
+
+
