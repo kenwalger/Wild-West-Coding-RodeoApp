@@ -25,11 +25,13 @@ func NewAuthHandler(ctx context.Context, collection *mongo.Collection) *AuthHand
 }
 
 // swagger:operation POST /signin auth signIn
-// Login with username and password
+//
+// # Login with username and password
+//
 // ---
 // parameters:
 //   - name: username
-//     in: json
+//     in: header
 //     description: username
 //     required: true
 //     type: string
@@ -39,16 +41,16 @@ func NewAuthHandler(ctx context.Context, collection *mongo.Collection) *AuthHand
 //     required: true
 //     type: string
 //
-// produce:
+// produces:
 // - application/json
 // responses:
 //
 //	'200':
-//	    description: Successful sign in operation
+//	  description: Successful sign in operation
 //	'400':
-//	    description: Bad Request
+//	  description: Bad Request
 //	'401':
-//	    description: Unauthorized - Invalid credentials
+//	  description: Unauthorized - Invalid credentials
 func (handler *AuthHandler) SignInHandler(c *gin.Context) {
 	var user models.User
 	if err := c.ShouldBindJSON(&user); err != nil {
@@ -85,14 +87,16 @@ func (handler *AuthHandler) SignInHandler(c *gin.Context) {
 }
 
 // swagger:operation POST /signout auth signout
-// Sign out of the application
+//
+// # Sign out of the application
+//
 // ---
 // produces:
 // - application/json
-// response:
+// responses:
 //
 //	'200':
-//	    description: Successful signout from the application
+//	  description: Successful signout from the application
 func (handler *AuthHandler) SignOutHandler(c *gin.Context) {
 	session := sessions.Default(c)
 	session.Clear()

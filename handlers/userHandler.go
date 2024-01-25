@@ -37,15 +37,16 @@ var hashingParams = &utils.Argon2Parameters{
 }
 
 // swagger:operation GET /u/register user register
-// User registration web page
-// ---
 //
+// # User registration web page
+//
+// ---
 // produces:
 // - application/html
 // responses:
 //
 //	'200':
-//	    description: Successful web page rendering
+//	  description: Successful web page rendering
 func (handler *UserHandler) ShowRegistrationPage(c *gin.Context) {
 	c.HTML(
 		http.StatusOK,
@@ -57,16 +58,18 @@ func (handler *UserHandler) ShowRegistrationPage(c *gin.Context) {
 }
 
 // swagger:operation POST /u/register user registerUser
-// Processed user registration web page
+//
+// # Processed user registration web page
+//
 // ---
 // produces:
 // - application/html
 // responses:
 //
 //	'200':
-//	    description: Successful user registration
+//	  description: Successful user registration
 //	'400':
-//	    description: Unable to register user
+//	  description: Unable to register user
 func (handler *UserHandler) RegisterUser(c *gin.Context) {
 	// Obtain form data
 	username := c.PostForm("userName")
@@ -139,14 +142,16 @@ func (handler *UserHandler) isUserNameAvailable(username string) bool {
 }
 
 // swagger:operation GET /u/login user loginUser
-// User login web page
+//
+// # User login web page
+//
 // ---
 // produces:
 // - application/html
 // responses:
 //
 //	'200':
-//	    description: Successful login page rendering
+//	  description: Successful login page rendering
 func (handler *UserHandler) Login(c *gin.Context) {
 	c.HTML(
 		http.StatusOK,
@@ -158,16 +163,18 @@ func (handler *UserHandler) Login(c *gin.Context) {
 }
 
 // swagger:operation POST /u/login user processLogin
-// Process the user login web page
+//
+// # Process the user login web page
+//
 // ---
 // produces:
 // - application/html
 // responses:
 //
 //	'200':
-//	    description: Successful user login
+//	  description: Successful user login
 //	'400':
-//	    description: Unable to register user
+//	  description: Unable to register user
 func (handler *UserHandler) ProcessLogin(c *gin.Context) {
 	// Get from data
 	username := c.PostForm("userName")
@@ -264,14 +271,16 @@ func (handler *UserHandler) VerifyUser(username, password string) (user *models.
 }
 
 // swagger:operation GET /u/logout user logoutUser
-// User logout web page
+//
+// # User logout web page
+//
 // ---
 // produces:
 // - application/html
 // responses:
 //
 //	'200':
-//	    description: Successful logout and redirect to home page.
+//	  description: Successful logout and redirect to home page.
 func (handler *UserHandler) Logout(c *gin.Context) {
 	// Clear Session
 	session := sessions.Default(c)

@@ -13,14 +13,16 @@ var date = time.Now()
 var year = date.Year()
 
 // swagger:operation GET / web index
-// The application index page
+//
+// # The application index page
+//
 // ---
 // produces:
 // - application/html
 // responses:
 //
 //	'200':
-//	    description: Successful rendering of the index page
+//	  description: Successful rendering of the index page
 func (handler *WebHandler) IndexHandler(c *gin.Context) {
 	c.HTML(
 		http.StatusOK,

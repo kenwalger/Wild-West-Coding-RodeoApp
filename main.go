@@ -2,11 +2,11 @@
 //
 // This is a sample API about rodeos. Additional information can be found at
 // https://github.com/kenwalger/Wild-West-Coding-RodeoApp
-//
 // Schemes: http
 // Host: localhost:8080
 // Basepath: /
 // Version: 1.0.0
+// License: MIT http://opensource.org/licenses/MIT
 // Contact: Ken W. Alger <kealger@cisco.com>
 //
 // Consumes:
@@ -14,6 +14,17 @@
 //
 // Produces:
 //   - application/json
+//   - application/html
+//
+// Security:
+// - api_key:
+//
+// SecurityDefinitions:
+// api_key:
+//
+//	type: apiKey
+//	name: token
+//	in: header
 //
 // swagger:meta
 package main
