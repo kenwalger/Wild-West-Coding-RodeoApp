@@ -55,15 +55,16 @@ Generate spec in markdown
 
 ### Recordings
 
-| Episode Number | Episode Topics | YouTube  | LinkedIn | Application     |
-|----------------|----------------|----------|----------|-----------------|
-| 1              | Project Setup  | [Link](https://www.youtube.com/watch?v=_BFUo-nQ3dE&list=PL2k86RlAekM-15R1CeiACQDQ6imxFToIF&index=2) | [Link](https://www.linkedin.com/events/wildwestcoding7092169384751763456/comments/) | Rodeo App       |
-| 2              | Version Control, struct tags, documentation, database connection | [Link](https://www.youtube.com/watch?v=jtVn8ObZbUo&list=PL2k86RlAekM-15R1CeiACQDQ6imxFToIF&index=1&t=1745s) | [Link](https://www.linkedin.com/events/parsing-integrations7092232101378338816/comments/) | Rodeo App       |
-| 3              | Adding a database and debugging | [Link](https://www.youtube.com/watch?v=9bCvgMmJ97s) | [Link](https://www.linkedin.com/events/wwc3-databasestoapisecurity7092272450637332481/comments/) | Rodeo App       |
-| 4              | API Routes | [Link](https://www.youtube.com/watch?v=nsYZB5jamMw) | [Link](https://www.linkedin.com/events/wwc4-apiroutesanddocumentation7105588023962058752/comments/) | Rodeo App       |
-| 5              | Finish API endpoints, implement JWT authorization | [Link](https://www.youtube.com/watch?v=oYqZSAlTPs4&list=PL2k86RlAekM-15R1CeiACQDQ6imxFToIF&index=2) | [Link](https://www.linkedin.com/events/securingtheapi7112464363583676418/comments/) | Rodeo App       |
-| 6              | Users & Password Hashing | [Link](https://www.youtube.com/watch?v=G5AMUFErcgw&list=PL2k86RlAekM-15R1CeiACQDQ6imxFToIF&index=7) | [Link](https://www.linkedin.com/events/users-passwordhashing7120080186661900288/comments/) | Rodeo App       |
-| 7              | Inedible Cookies | [Link](https://www.youtube.com/watch?v=anqXlL4EkVc&list=PL2k86RlAekM-15R1CeiACQDQ6imxFToIF&index=1&t=1s) | [Link](https://www.linkedin.com/events/inediblecookies7122360676488019969/comments/) | Rodeo App       |
-| 8              | Templates & Data Passing | [Link](https://www.youtube.com/watch?v=8lnss4xnpwY&list=PL2k86RlAekM-15R1CeiACQDQ6imxFToIF&index=11) | [Link](https://www.linkedin.com/events/7137830678917746688/comments/) | Rodeo App       |
-| 9              | Year End Celebration | [Link](https://www.youtube.com/watch?v=C3hkqD1kmb8&t=1s) | [Link](https://www.linkedin.com/events/yearendcelebration-wwc20237139034900170493952/comments/) | None - Just Fun |
-| 10             | User Login & Logout Page & Routes | [Link](https://www.youtube.com/watch?v=guGxaRcozvM&list=PL2k86RlAekM-15R1CeiACQDQ6imxFToIF) | [Link](https://www.linkedin.com/events/7153155292778647554/comments/) | Rodeo App       |
+| Episode Number | Episode Topics | YouTube  | LinkedIn | Application      |
+|----------------|----------------|----------|----------|------------------|
+| 1              | Project Setup  | [Link](https://www.youtube.com/watch?v=_BFUo-nQ3dE&list=PL2k86RlAekM-15R1CeiACQDQ6imxFToIF&index=2) | [Link](https://www.linkedin.com/events/wildwestcoding7092169384751763456/comments/) | Rodeo App        |
+| 2              | Version Control, struct tags, documentation, database connection | [Link](https://www.youtube.com/watch?v=jtVn8ObZbUo&list=PL2k86RlAekM-15R1CeiACQDQ6imxFToIF&index=1&t=1745s) | [Link](https://www.linkedin.com/events/parsing-integrations7092232101378338816/comments/) | Rodeo App        |
+| 3              | Adding a database and debugging | [Link](https://www.youtube.com/watch?v=9bCvgMmJ97s) | [Link](https://www.linkedin.com/events/wwc3-databasestoapisecurity7092272450637332481/comments/) | Rodeo App        |
+| 4              | API Routes | [Link](https://www.youtube.com/watch?v=nsYZB5jamMw) | [Link](https://www.linkedin.com/events/wwc4-apiroutesanddocumentation7105588023962058752/comments/) | Rodeo App        |
+| 5              | Finish API endpoints, implement JWT authorization | [Link](https://www.youtube.com/watch?v=oYqZSAlTPs4&list=PL2k86RlAekM-15R1CeiACQDQ6imxFToIF&index=2) | [Link](https://www.linkedin.com/events/securingtheapi7112464363583676418/comments/) | Rodeo App        |
+| 6              | Users & Password Hashing | [Link](https://www.youtube.com/watch?v=G5AMUFErcgw&list=PL2k86RlAekM-15R1CeiACQDQ6imxFToIF&index=7) | [Link](https://www.linkedin.com/events/users-passwordhashing7120080186661900288/comments/) | Rodeo App        |
+| 7              | Inedible Cookies | [Link](https://www.youtube.com/watch?v=anqXlL4EkVc&list=PL2k86RlAekM-15R1CeiACQDQ6imxFToIF&index=1&t=1s) | [Link](https://www.linkedin.com/events/inediblecookies7122360676488019969/comments/) | Rodeo App        |
+| 8              | Templates & Data Passing | [Link](https://www.youtube.com/watch?v=8lnss4xnpwY&list=PL2k86RlAekM-15R1CeiACQDQ6imxFToIF&index=11) | [Link](https://www.linkedin.com/events/7137830678917746688/comments/) | Rodeo App        |
+| 9              | Year End Celebration | [Link](https://www.youtube.com/watch?v=C3hkqD1kmb8&t=1s) | [Link](https://www.linkedin.com/events/yearendcelebration-wwc20237139034900170493952/comments/) | None - Just Fun  |
+| 10             | User Login & Logout Page & Routes | [Link](https://www.youtube.com/watch?v=guGxaRcozvM&list=PL2k86RlAekM-15R1CeiACQDQ6imxFToIF) | [Link](https://www.linkedin.com/events/7153155292778647554/comments/) | Rodeo App        |
+| 11             | The AI Surge in 2024: Reshaping Developer and DevOps with guest John Capobianco | [Link](https://www.youtube.com/watch?v=iaV6KDNQXEc) | [Link](https://www.linkedin.com/events/theaisurgein2024-reshapingdevel7150243689200537601/comments/) | None - Just Fun  |
