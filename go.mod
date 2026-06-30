@@ -7,7 +7,7 @@ require (
 	github.com/gin-gonic/gin v1.9.1
 	github.com/joho/godotenv v1.5.1
 	github.com/rs/xid v1.5.0
-	go.mongodb.org/mongo-driver v1.13.2
+	go.mongodb.org/mongo-driver v1.17.7
 	golang.org/x/crypto v0.45.0
 	golang.org/x/net v0.38.0
 )
